@@ -17,6 +17,11 @@
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+
+    .active{
+      background-color: #7c8898 !important;
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-[color:hsl(216,12%,8%)] text-white text-[15px] font-[Overpass] flex justify-center items-center flex-col  h-screen w-full">
@@ -24,10 +29,10 @@
 <main role="main" class="h-screen">
     <div class="container card bg-[#1e252f] flex mt-8 justify-center items-center px-8 rounded-2xl h-80 w-[30dvw]">
 
-  <div class="rating flex gap-4 flex-col">
+  <div id="rating" class="rating flex gap-4 flex-col">
 
 <!-- Rating state start -->
-<div class="rounded-full bg-[#252e37]  w-fit flex justify-center items-center p-2">
+<div class="rounded-full bg-[#252e37] cursor-pointer  w-fit flex justify-center items-center p-2">
 
   <img src="./images/icon-star.svg" alt="">
 </div>
@@ -38,44 +43,63 @@ How did we do?
 <h1/>
   
 <p class="font-normal text-sm text-[color:hsl(216,12%,54%)]">
-   Please let us know how we did with your support request.<br> All feedback is appreciated 
+   Please let us know how we did with your support request. All feedback is appreciated 
   to help us improve our offering!
 </p>
 </div>  
 
 <div class="flex flex-col">
-
   <ul class="flex flex-row text-[15px] text-[color:hsl(217,12%,63%)] justify-between ">
-    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">1</li>
-    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">2</li>
-    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">3</li>
-    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">4</li>
-    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">5</li>
+    <li class="rate rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer hover:text-white hover:bg-[color:hsl(25,97%,53%)]" onclick="changeColor(this, 1)">1</li>
+    <li class="rate rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer hover:text-white hover:bg-[color:hsl(25,97%,53%)]" onclick="changeColor(this, 2)">2</li>
+    <li class="rate rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer hover:text-white hover:bg-[color:hsl(25,97%,53%)]" onclick="changeColor(this, 3)">3</li>
+    <li class="rate rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer hover:text-white hover:bg-[color:hsl(25,97%,53%)]" onclick="changeColor(this, 4)">4</li>
+    <li class="rate rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer hover:text-white hover:bg-[color:hsl(25,97%,53%)]" onclick="changeColor(this, 5)">5</li>
   </ul>
- 
- <button class="bg-[color:hsl(25,97%,53%)] flex justify-center items-center p-2 rounded-2xl uppercase mt-4 hover:bg-white hover:text-[color:hsl(25,97%,53%)]">
- Submit
- <button/>
- 
+  
+  <button class="bg-[color:hsl(25,97%,53%)] flex justify-center items-center p-2 rounded-2xl uppercase mt-4 hover:bg-white hover:text-[color:hsl(25,97%,53%)]" onclick="submitRating()">
+    Submit
+  </button>
+  
 </div>
  
+ <p id="ratingMessage" class="py-2 text-[8px] font-bold text-[color:hsl(217,12%,63%)] italic hidden">Please select a rating before submitting....</p>
 
-   </div>
+</div>
   <!-- Rating state end -->
 
   <!-- Thank you state start -->
 
-  <div class="selection hidden">
+<div id="thankYouMessage" class="thank-you flex flex-col gap-4 hidden">
 
- You selected <!-- Add rating here --> out of 5
+  <div class="flex justify-center items-center">
+      <img src="./images/illustration-thank-you.svg" alt="">
+    </div>
+ 
+<div class="flex justify-center items-center rounded-full bg-[#252e37] p-2">
+  <p style="color:hsl(25,97%,53%) ;">
+    You selected <!-- Add rating here --> <span id="selectedRating"></span> out of 5
+    </p>
+</div>
 
-  Thank you!
+<div class="flex flex-col gap-3 justify-center items-center">
+<h1 class="flex font-bold text-[15px]">Thank you!</h1>
 
-  We appreciate you taking the time to give a rating. If you ever need more support, 
+<p class="flex font-normal text-[color:hsl(216,12%,54%)] text-[15px]">
+ We appreciate you taking the time to give a rating. If you ever need more support, 
   don’t hesitate to get in touch!
+</p>
+</div>
+  
+
+ 
 
   <!-- Thank you state end -->
   </div>
+   </div>
+
+
+  
  
 
 
@@ -90,6 +114,51 @@ How did we do?
     Coded by <a href="#">Davisco</a>.
   </div>
   </footer>
- 
+
+
+  
+<script>
+  let selectedRating = null;
+
+  function changeColor(element, value) {
+    // Remove 'active' class from all list items
+    const listItems = document.querySelectorAll('.rate');
+    listItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked list item
+    element.classList.add('active');
+
+    // Store the selected rating value
+    selectedRating = value;
+
+    // Update the content of the span with the selected rating
+    document.getElementById('selectedRating').textContent = selectedRating;
+  }
+
+  function submitRating() {
+    const rating = document.getElementById('rating')
+    const thankYouMessage = document.getElementById('thankYouMessage')
+    const ratingMessage = document.getElementById('ratingMessage')
+    // Use the selectedRating value as needed
+    if (selectedRating !== null) {
+      console.log("Selected Rating: ", selectedRating);
+      rating.classList.add("hidden")
+      ratingMessage.classList.add("hidden");
+      thankYouMessage.classList.remove("hidden")
+      // Add your logic to submit the rating
+
+
+    } else {
+      console.log("Please select a rating before submitting.");
+      rating.classList.remove("hidden")
+      ratingMessage.classList.remove("hidden");
+      thankYouMessage.classList.add("hidden")
+      
+      // Add your logic to handle the case where no rating is selected
+    }
+  }
+</script>
 </body>
 </html>
