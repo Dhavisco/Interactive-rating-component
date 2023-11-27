@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass&family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="output.css">
+  
+  <title>Frontend Mentor | Interactive rating component</title>
+
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="bg-[color:hsl(216,12%,8%)] text-white text-[15px] font-[Overpass] flex justify-center items-center flex-col  h-screen w-full">
+
+<main role="main" class="h-screen">
+    <div class="container card bg-[#1e252f] flex mt-8 justify-center items-center px-8 rounded-2xl h-80 w-[30dvw]">
+
+  <div class="rating flex gap-4 flex-col">
+
+<!-- Rating state start -->
+<div class="rounded-full bg-[#252e37]  w-fit flex justify-center items-center p-2">
+
+  <img src="./images/icon-star.svg" alt="">
+</div>
+
+<div class="flex flex-col">
+<h1 class="font-bold">
+How did we do?
+<h1/>
+  
+<p class="font-normal text-sm text-[color:hsl(216,12%,54%)]">
+   Please let us know how we did with your support request.<br> All feedback is appreciated 
+  to help us improve our offering!
+</p>
+</div>  
+
+<div class="flex flex-col">
+
+  <ul class="flex flex-row text-[15px] text-[color:hsl(217,12%,63%)] justify-between ">
+    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">1</li>
+    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">2</li>
+    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">3</li>
+    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">4</li>
+    <li class="rounded-full bg-[#252e37] flex justify-center items-center w-2 h-2 p-5 cursor-pointer">5</li>
+  </ul>
+ 
+ <button class="bg-[color:hsl(25,97%,53%)] flex justify-center items-center p-2 rounded-2xl uppercase mt-4 hover:bg-white hover:text-[color:hsl(25,97%,53%)]">
+ Submit
+ <button/>
+ 
+</div>
+ 
+
+   </div>
+  <!-- Rating state end -->
+
+  <!-- Thank you state start -->
+
+  <div class="selection hidden">
+
+ You selected <!-- Add rating here --> out of 5
+
+  Thank you!
+
+  We appreciate you taking the time to give a rating. If you ever need more support, 
+  don’t hesitate to get in touch!
+
+  <!-- Thank you state end -->
+  </div>
+ 
+
+
+  </div>
+</main>
+
+
+ 
+  <footer role="footer">
+ <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Davisco</a>.
+  </div>
+  </footer>
+ 
+</body>
+</html>
