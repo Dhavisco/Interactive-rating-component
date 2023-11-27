@@ -787,3 +787,47 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+
+@media (min-width: 768px) {
+  .md\:w-\[\] {
+    width: ;
+  }
+
+  .md\:w-\[77\] {
+    width: 77;
+  }
+
+  .md\:w-\[77d\] {
+    width: 77d;
+  }
+
+  .md\:w-\[77dvw\] {
+    width: 77dvw;
+  }
+
+  .md\:w-\[70dvw\] {
+    width: 70dvw;
+  }
+
+  .md\:w-\[60dvw\] {
+    width: 60dvw;
+  }
+
+  .md\:w-\[40dvw\] {
+    width: 40dvw;
+  }
+
+  .md\:w-\[30dvw\] {
+    width: 30dvw;
+  }
+
+  .md\:w-0 {
+    width: 0px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-\[30dvw\] {
+    width: 30dvw;
+  }
+}

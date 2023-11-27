@@ -22,12 +22,51 @@
       background-color: #7c8898 !important;
       color: white;
     }
+
+    .card{
+      margin-top: 8rem; 
+      height: 23rem; 
+    }
+
+   @media (max-width: 499px) {
+      .card{
+      margin-top: 10rem; 
+      width: 77dvw;
+    }
+  }
+     @media (min-width:500px) {
+
+      @media (max-width:768px){
+        .card{
+      margin-top: 10rem; 
+      width: 60dvw;
+      }
+    }
+
+    @media (max-width:1023px){
+        .card{
+      margin-top: 10rem; 
+      width: 45vw;
+      }
+    }
+ }
+
+ @media(min-width:1024px){
+     .card{
+      margin-top: 8rem; 
+      width: 30vw;
+      }
+ }
+
+   
+ 
+
   </style>
 </head>
 <body class="bg-[color:hsl(216,12%,8%)] text-white text-[15px] font-[Overpass] flex justify-center items-center flex-col  h-screen w-full">
 
 <main role="main" class="h-screen">
-    <div style="margin-top: 8rem; height: 23rem;" class="container card bg-[#1e252f] flex justify-center items-center px-8 rounded-2xl w-[30dvw]">
+    <div class="container card bg-[#1e252f] flex justify-center items-center px-8 rounded-2xl lg:w-[30dvw]">
 
   <div id="rating" class="rating flex gap-4 flex-col">
 
@@ -141,22 +180,24 @@ How did we do?
     const rating = document.getElementById('rating')
     const thankYouMessage = document.getElementById('thankYouMessage')
     const ratingMessage = document.getElementById('ratingMessage')
-    // Use the selectedRating value as needed
+
+    // Using the selectedRating value as needed
     if (selectedRating !== null) {
-      console.log("Selected Rating: ", selectedRating);
+      //logic to handle the case where rating is selected
       rating.classList.add("hidden")
       ratingMessage.classList.add("hidden");
       thankYouMessage.classList.remove("hidden")
-      // Add your logic to submit the rating
+      
 
 
     } else {
-      console.log("Please select a rating before submitting.");
+
+      //logic to handle the case where no rating is selected
       rating.classList.remove("hidden")
       ratingMessage.classList.remove("hidden");
       thankYouMessage.classList.add("hidden")
       
-      // Add your logic to handle the case where no rating is selected
+      
     }
   }
 </script>
